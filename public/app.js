@@ -16,19 +16,18 @@ document.getElementById('leadForm').addEventListener('submit', async function (e
   messageEl.className = 'message hidden';
 
   try {
-    const response = await fetch('/api/subscribe', {
+    const response = await fetch('https://n8n.cubixmedia.fr/webhook/landing-plaquette', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
 
-    const result = await response.json();
-
-    if (response.ok && result.success) {
+    if (response.ok) {
       messageEl.textContent = 'Merci ! Votre demande a bien été enregistrée. Vous recevrez la plaquette prochainement.';
       messageEl.className = 'message success';
       e.target.reset();
     } else {
+      const result = await response.json().catch(() => ({}));
       messageEl.textContent = result.error || 'Une erreur est survenue. Veuillez réessayer.';
       messageEl.className = 'message error';
     }

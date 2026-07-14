@@ -1,10 +1,7 @@
 services:
   landing-plaquette:
-    build: .
-    environment:
-      - MAUTIC_URL=${MAUTIC_URL}
-      - MAUTIC_USER=${MAUTIC_USER}
-      - MAUTIC_PASSWORD=${MAUTIC_PASSWORD}
-      - PORT=3000
+    image: nginx:alpine
     ports:
-      - "3000"
+      - "80"
+    volumes:
+      - ./public:/usr/share/nginx/html:ro

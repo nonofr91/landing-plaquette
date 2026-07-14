@@ -1,0 +1,13 @@
+{
+  "name": "landing-mautic-plaquette",
+  "version": "1.0.0",
+  "description": "Landing page pour demander la plaquette Cubix Media avec envoi des leads vers Mautic",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "express": "^4.19.2"
+  }
+}
